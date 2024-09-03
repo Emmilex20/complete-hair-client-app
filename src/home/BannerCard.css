@@ -1,0 +1,56 @@
+.banner .swiper {
+    width: 240px;
+    height: 320px;
+    /* overflow: hidden; Ensure no overflow */
+  }
+  
+  .banner .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    background-size: cover; /* Ensure the image covers the slide */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+  }
+  
+  .banner .swiper-slide:nth-child(1) {
+    background-image: url('/src/assets/Hair-1.jpg');
+  }
+  
+  .banner .swiper-slide:nth-child(2) {
+    background-image: url('/src/assets/Hair-2.jpg');
+  }
+  
+  .banner .swiper-slide:nth-child(3) {
+    background-image: url('/src/assets/Hair-3.jpg');
+  }
+  
+  .banner .swiper-slide:nth-child(4) {
+    background-image: url('/src/assets/Hair-4.png');
+  }
+  
+  .banner .swiper-slide:nth-child(5) {
+    background-image: url('/src/assets/Hair-5.jpg');
+  }
+  
+  .banner .swiper-slide:nth-child(6) {
+    background-image: url('/src/assets/Hair-6.jpg');
+  }
+  
+  .banner .swiper-slide:nth-child(7) {
+    background-image: url('/src/assets/Hair-7.jpg');
+  }
+  
+  .banner .swiper-slide:nth-child(8) {
+    background-image: url('/src/assets/Hair-8.jpg');
+  }
+  
+  /* Optional: Add a fallback color */
+  .banner .swiper-slide {
+    background-color: #333; /* Fallback color */
+  }
+  
