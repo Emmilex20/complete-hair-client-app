@@ -27,7 +27,7 @@ const Login = () => {
       console.log("User info being sent:", userInfo); // Log user info
 
       // Make POST request
-      await axios.post("http://localhost:5000/users", userInfo);
+      await axios.post("https://complete-hair-client-server-3.onrender.com/users", userInfo);
 
       alert("Logged in Successfully!");
       document.getElementById("my_modal_5").close();
@@ -53,7 +53,7 @@ const Login = () => {
       console.log("User info being sent:", userInfo); // Log user info
 
       // Make POST request
-      await axios.post("http://localhost:5000/users", userInfo);
+      await axios.post("https://complete-hair-client-server-3.onrender.com/users", userInfo);
 
       alert("Signed in successfully!");
       document.getElementById("my_modal_5").close();

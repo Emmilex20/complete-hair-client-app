@@ -63,7 +63,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser) {
         const userInfo = { email: currentUser.email };
-        axios.post("http://localhost:5000/jwt", userInfo).then((response) => {
+        axios.post("https://complete-hair-client-server-3.onrender.com/jwt", userInfo).then((response) => {
           // console.log("User registered successfully:", response.data.token);
           if (response.data.token) {
             localStorage.setItem("access-token", response.data.token);

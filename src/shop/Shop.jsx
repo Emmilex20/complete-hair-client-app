@@ -17,7 +17,7 @@ const Shop = () => {
   useEffect(() => {
     const fetchHairs = async () => {
       try {
-        const res = await fetch("http://localhost:5000/all-hairs");
+        const res = await fetch("https://complete-hair-client-server-3.onrender.com/all-hairs");
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
@@ -53,7 +53,7 @@ const Shop = () => {
         email: user.email,
       };
 
-      fetch("http://localhost:5000/carts", {
+      fetch("https://complete-hair-client-server-3.onrender.com/carts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 const ManageHairs = () => {
   const [allHairs, setAllHairs] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/all-hairs").then(res => res.json()).then(data => setAllHairs(data));
+    fetch("https://complete-hair-client-server-3.onrender.com/all-hairs").then(res => res.json()).then(data => setAllHairs(data));
   }, [])
 
   // Delete a hair
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/hair/${id}`, {
+    fetch(`https://complete-hair-client-server-3.onrender.com/hair/${id}`, {
       method: "DELETE",
     }).then(res => res.json()).then(datat => {
       alert(`Hair with ID ${id} has been deleted successfully.`)

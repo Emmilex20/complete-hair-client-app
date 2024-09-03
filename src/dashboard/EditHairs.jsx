@@ -48,7 +48,7 @@ const EditHairs = () => {
         }
 
         // Update data 
-        fetch(`http://localhost:5000/hair/${id}`, {
+        fetch(`https://complete-hair-client-server-3.onrender.com/hair/${id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

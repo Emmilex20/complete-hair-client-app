@@ -5,7 +5,7 @@ const OtherHairs = () => {
     const [hairs, setHairs] = React.useState([]);
 
     useEffect(() => {
-      fetch("http://localhost:5000/all-hairs")
+      fetch("https://complete-hair-client-server-3.onrender.com/all-hairs")
         .then((res) => res.json())
         .then((data) => setHairs(data.slice(4, 15)));
     }, []);

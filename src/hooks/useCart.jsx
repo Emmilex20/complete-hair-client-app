@@ -10,7 +10,7 @@ const useCart = () => {
     queryKey: ["carts", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/carts?email=${user?.email}`, {
+        `https://complete-hair-client-server-3.onrender.com/carts?email=${user?.email}`, {
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`,

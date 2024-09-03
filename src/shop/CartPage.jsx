@@ -19,7 +19,7 @@ const CartPage = () => {
   // Handle decrease quantity of item in cart
   const handleDecrease = (item) => {
     if (item.quantity > 1) {
-      fetch(`http://localhost:5000/carts/${item._id}`, {
+      fetch(`https://complete-hair-client-server-3.onrender.com/carts/${item._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const CartPage = () => {
 
   // Handle increase quantity of item in cart
   const handleIncrease = (item) => {
-    fetch(`http://localhost:5000/carts/${item._id}`, {
+    fetch(`https://complete-hair-client-server-3.onrender.com/carts/${item._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const CartPage = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${item._id}`, {
+        fetch(`https://complete-hair-client-server-3.onrender.com/carts/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

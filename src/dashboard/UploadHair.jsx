@@ -42,7 +42,7 @@ const UploadHair = () => {
         }
 
         // send data to server
-        fetch("http://localhost:5000/upload-hairs", {
+        fetch("https://complete-hair-client-server-3.onrender.com/upload-hairs", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

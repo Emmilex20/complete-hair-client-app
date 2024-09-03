@@ -83,7 +83,7 @@ const router = createBrowserRouter([
         element: <SingleHair />,
         loader: async ({ params }) => {
           const response = await fetch(
-            `http://localhost:5000/hair/${params.id}`
+            `https://complete-hair-client-server-3.onrender.com/hair/${params.id}`
           );
           if (!response.ok) {
             throw new Response("Failed to fetch hair data", {
@@ -121,7 +121,7 @@ const router = createBrowserRouter([
         path: "update-hair/:id",
         element: <UpdateHair />,
         loader: async ({ params }) => {
-          const response = await fetch(`http://localhost:5000/hair/${params.id}`);
+          const response = await fetch(`https://complete-hair-client-server-3.onrender.com/hair/${params.id}`);
           if (!response.ok) {
             throw new Response("Failed to fetch hair data", {
               status: response.status,
