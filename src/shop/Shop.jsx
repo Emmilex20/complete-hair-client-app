@@ -66,7 +66,7 @@ const Shop = () => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: "Your work has been saved",
+              title: "Added to Cart",
               showConfirmButton: false,
               timer: 1500
             });
