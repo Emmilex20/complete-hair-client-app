@@ -11,7 +11,7 @@ const CartPage = () => {
 
   // Calculate price for an individual item
   const calculatePrice = (item) => {
-    const priceWithoutSymbol = parseFloat(item.price.replace(/[^\d.-]/g, ''));
+    const priceWithoutSymbol = parseFloat(item.price.replace(/[^\d.-]/g, ""));
     const totalPrice = priceWithoutSymbol * item.quantity;
     return totalPrice;
   };
@@ -90,11 +90,11 @@ const CartPage = () => {
   };
 
   return (
-    <div className="section-container max-w-screen-2xl mx-auto xl:px-24 px-4">
-      <div className="max-w-screen-2xl container mx-auto xl:px-18">
-        <div className="py-8 px-16 items-center justify-center gap-16">
-          <div className="px-4 space-y-7">
-            <h1 className="md:text-5xl text-4xl mt-20 font-bold text-center text-grey-500 mb-4 md:leading-snug leading-snug">
+    <div className="section-container max-w-screen-2xl mx-auto px-4 md:px-8">
+      <div className="container mx-auto">
+        <div className="py-8 md:px-16 px-4 items-center justify-center gap-16">
+          <div className="space-y-7">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-grey-500 mb-4 leading-snug">
               Items Added to the <span className="text-blue-800">Cart</span>
             </h1>
           </div>
@@ -102,7 +102,7 @@ const CartPage = () => {
           {/* Table for Cart Items */}
           {cart.length > 0 ? (
             <div className="overflow-x-auto">
-              <table className="table bg-black rounded-lg shadow-md">
+              <table className="table w-full bg-black rounded-lg shadow-md">
                 {/* Head */}
                 <thead className="bg-blue-400 text-black rounded-sm">
                   <tr>
@@ -139,7 +139,7 @@ const CartPage = () => {
                           <input
                             type="number"
                             value={item.quantity}
-                            className="w-10 mx-2 text-center overflow-hidden appearance-none bg-gray-400 m-4 text-black"
+                            className="w-10 mx-2 text-center overflow-hidden appearance-none bg-gray-400 text-black"
                             readOnly
                           />
                           <button
@@ -177,7 +177,7 @@ const CartPage = () => {
 
           {/* Customer details */}
           {cart.length > 0 && (
-            <div className="my-12 flex flex-col md:flex-row justify-between items-start">
+            <div className="my-12 flex flex-col md:flex-row justify-between items-start gap-6 md:gap-12">
               <div className="md:w-1/2 space-y-3">
                 <h3 className="font-medium">Customer Details</h3>
                 <p>Name: {user.displayName}</p>
@@ -189,7 +189,7 @@ const CartPage = () => {
                 <p>Total Items: {cart.length}</p>
                 <p>Total Price: ₦{cartTotal.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                 <Link to="/process-checkout">
-                  <button className="btn bg-blue-400 text-white px-8 py-1 mt-5">
+                  <button className="btn bg-blue-400 text-white px-8 py-1 mt-5 w-full md:w-auto">
                     Proceed to Checkout
                   </button>
                 </Link>
