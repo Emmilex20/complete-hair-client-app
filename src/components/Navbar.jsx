@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { FaUser } from "react-icons/fa";
@@ -13,6 +13,7 @@ const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const { user } = useAuth();
   const [cart] = useCart();
+  const navMenuRef = useRef(null); // Ref for the mobile nav menu
 
   // Toggle menu for mobile devices
   const toggleMenu = () => {
@@ -41,6 +42,21 @@ const Navbar = () => {
     };
   }, []);
 
+  // Handle click outside of mobile nav menu
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navMenuRef.current && !navMenuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const navItems = [
     { link: "Home", path: "/" },
     { link: "About", path: "/about" },
@@ -49,7 +65,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="max-w-screen-2xl container mx-auto w-full fixed top-0 left-0 right-0 transition-all ease-in duration-300 z-50">
+    <header className="max-w-screen-2xl container mx-auto w-full fixed top-0 left-0 right-0 transition-all ease-in duration-300 z-40">
       <div
         className={`navbar flex justify-between items-center px-4 lg:px-16 text-white ${
           isSticky
@@ -96,37 +112,40 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center space-x-4">
           {/* Cart */}
           <Link to="cart-page">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle text-gray-500 mr-3 lg:flex hidden items-center justify-center"
-          >
-            <div className="indicator">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-              <span className="badge badge-sm indicator-item">{cart.length || 0}</span>
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle text-gray-500 mr-3 lg:flex hidden items-center justify-center"
+            >
+              <div className="indicator">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span className="badge badge-sm indicator-item">{cart.length || 0}</span>
+              </div>
             </div>
-          </div>
           </Link>
 
           {/* User/Profile */}
           {user ? (
-            <Profile user={user} />
+            <Profile user={user} onClick={handleNavClick} />
           ) : (
             <button
-              onClick={() => document.getElementById("my_modal_5").showModal()}
+              onClick={() => {
+                handleNavClick();
+                document.getElementById("my_modal_5").showModal();
+              }}
               className="btn bg-blue-500 rounded-full px-6 text-white flex items-center gap-2 border-none outline-none"
             >
               <FaUser /> Login
@@ -140,9 +159,8 @@ const Navbar = () => {
 
       {/* Nav items for medium/small devices */}
       <div
-        className={`lg:hidden ${
-          isMenuOpen ? "block fixed top-0 right-0 left-0 bg-blue-700" : "hidden"
-        }`}
+        ref={navMenuRef}
+        className={`lg:hidden fixed top-0 right-0 left-0 bg-blue-700 transition-transform duration-300 ${isMenuOpen ? "transform translate-x-0" : "transform -translate-x-full"} z-50`}
       >
         <ul className="flex flex-col items-center py-6 space-y-4 text-white">
           {navItems.map(({ link, path }) => (
@@ -166,28 +184,27 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle text-white relative"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-              <span className="badge badge-sm indicator-item bg-blue-500 text-white">
-                {cart.length || 0}
-              </span>
+              <div className="indicator">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span className="badge badge-sm indicator-item">{cart.length || 0}</span>
+              </div>
             </div>
           </Link>
-
           {user ? (
-            <Profile user={user} />
+            <Profile user={user} onClick={handleNavClick} />
           ) : (
             <button
               onClick={() => {
@@ -204,5 +221,6 @@ const Navbar = () => {
     </header>
   );
 };
+
 
 export default Navbar;

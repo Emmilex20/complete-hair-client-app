@@ -17,6 +17,7 @@ const Profile = ({ user }) => {
         alert("Failed to sign out. Please try again.");
       });
   };
+
   return (
     <div>
       <div className="drawer drawer-end z-40">
@@ -30,7 +31,7 @@ const Profile = ({ user }) => {
             <div className="w-10 rounded-full flex items-center justify-center overflow-hidden">
               {user.photoURL ? (
                 <img
-                  alt="Tailwind CSS Navbar component"
+                  alt="Profile"
                   src={user.photoURL || "https://via.placeholder.com/150"}
                 />
               ) : (
@@ -45,21 +46,23 @@ const Profile = ({ user }) => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-            {/* Sidebar content here */}
-            <li>
-              <a href="/update-profile">Profile</a>
-            </li>
-            <li>
-              <a href="/order">Order</a>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <a onClick={handleLogout}>Logout</a>
-            </li>
-          </ul>
+          <div className="drawer-content flex items-center justify-center">
+            <ul className="menu bg-gradient-to-r from-base-200 from-10% via-gray via-30% to-blue-400 to-90% ... text-white min-h-28 max-w-s w-auto p-4">
+              {/* Sidebar content here */}
+              <li>
+                <a href="/update-profile">Profile</a>
+              </li>
+              <li>
+                <a href="/order">Order</a>
+              </li>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <a onClick={handleLogout}>Logout</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

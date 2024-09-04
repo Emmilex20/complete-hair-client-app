@@ -6,7 +6,6 @@ import {
   HiOutlineCloudUpload,
   HiTable,
 } from "react-icons/hi";
-// eslint-disable-next-line no-unused-vars
 import logo from "../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
