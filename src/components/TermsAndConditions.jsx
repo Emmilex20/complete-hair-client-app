@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const TermsAndConditions = () => {
   return (
-    <div className="bg-gray-100 min-h-screen py-10 px-4 lg:px-16">
+    <div className="bg-gray-100 min-h-screen py-10 px-4 lg:px-16 pt-16">
       <div className="max-w-screen-lg mx-auto bg-white p-6 rounded-lg shadow-md">
         <header className="mb-8">
           <h1 className="text-3xl lg:text-4xl font-bold text-blue-800 mb-2">Terms & Conditions</h1>
