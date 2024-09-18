@@ -27,6 +27,9 @@ import UpdateHair from "../dashboard/admin/UpdateHair";
 import Payment from "../shop/Payment";
 import Order from "../dashboard/Order";
 import ManageBookings from "../dashboard/admin/ManageBookings";
+import PrivacyPolicy from "../components/PrivacyPolicy";
+import Licensing from "../components/Licensing";
+import TermsAndConditions from "../components/TermsAndConditions";
 
 const router = createBrowserRouter([
   // Main routes
@@ -77,6 +80,18 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/licensing",
+        element: <Licensing />,
+      },
+      {
+        path: "/terms",
+        element: <TermsAndConditions />,
       },
       {
         path: "/hair/:id",

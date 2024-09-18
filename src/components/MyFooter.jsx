@@ -27,9 +27,9 @@ const MyFooter = () => {
         <div>
           <Footer.Title title="legal" />
           <Footer.LinkGroup col>
-            <Footer.Link href="#">Privacy Policy</Footer.Link>
-            <Footer.Link href="#">Licensing</Footer.Link>
-            <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
+            <Footer.Link href="/privacy">Privacy Policy</Footer.Link>
+            <Footer.Link href="/licensing">Licensing</Footer.Link>
+            <Footer.Link href="/terms">Terms &amp; Conditions</Footer.Link>
           </Footer.LinkGroup>
         </div>
         <div>

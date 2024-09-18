@@ -160,16 +160,14 @@ const Navbar = () => {
       {/* Nav items for medium/small devices */}
       <div
         ref={navMenuRef}
-        className={`lg:hidden fixed top-0 right-0 left-0 bg-blue-700 transition-transform duration-300 ${isMenuOpen ? "transform translate-x-0" : "transform -translate-x-full"} z-50`}
+        className={`lg:hidden fixed top-0 right-0 left-0 bg-blue-700 transition-transform duration-300 ${
+          isMenuOpen ? "transform translate-x-0" : "transform -translate-x-full"
+        } z-50`}
       >
         <ul className="flex flex-col items-center py-6 space-y-4 text-white">
           {navItems.map(({ link, path }) => (
             <li key={path}>
-              <Link
-                to={path}
-                onClick={handleNavClick}
-                className="text-lg"
-              >
+              <Link to={path} onClick={handleNavClick} className="text-lg">
                 {link}
               </Link>
             </li>
@@ -221,6 +219,5 @@ const Navbar = () => {
     </header>
   );
 };
-
 
 export default Navbar;
