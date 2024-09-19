@@ -158,64 +158,72 @@ const Navbar = () => {
       <Modal />
 
       {/* Nav items for medium/small devices */}
-      <div
-        ref={navMenuRef}
-        className={`lg:hidden fixed top-0 right-0 left-0 bg-blue-700 transition-transform duration-300 ${
-          isMenuOpen ? "transform translate-x-0" : "transform -translate-x-full"
-        } z-50`}
-      >
-        <ul className="flex flex-col items-center py-6 space-y-4 text-white">
-          {navItems.map(({ link, path }) => (
-            <li key={path}>
-              <Link to={path} onClick={handleNavClick} className="text-lg">
-                {link}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      {/* Nav items for medium/small devices */}
+<div
+  ref={navMenuRef}
+  className={`lg:hidden fixed top-0 right-0 left-0 bg-blue-700 transition-transform duration-300 ${
+    isMenuOpen ? "transform translate-x-0" : "transform -translate-x-full"
+  } z-50`}
+>
+  <button
+    className="absolute top-4 right-4 text-white"
+    onClick={handleNavClick}
+  >
+    <FaXmark className="h-5 w-5" />
+  </button>
+  <ul className="flex flex-col items-center py-6 space-y-4 text-white">
+    {navItems.map(({ link, path }) => (
+      <li key={path}>
+        <Link to={path} onClick={handleNavClick} className="text-lg">
+          {link}
+        </Link>
+      </li>
+    ))}
+  </ul>
 
-        {/* Cart and User/Profile for small devices */}
-        <div className="flex justify-center items-center space-x-6 py-4">
-          <Link to="cart-page" onClick={handleNavClick}>
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle text-white relative"
-            >
-              <div className="indicator">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-                <span className="badge badge-sm indicator-item">{cart.length || 0}</span>
-              </div>
-            </div>
-          </Link>
-          {user ? (
-            <Profile user={user} onClick={handleNavClick} />
-          ) : (
-            <button
-              onClick={() => {
-                handleNavClick();
-                document.getElementById("my_modal_5").showModal();
-              }}
-              className="btn bg-blue-500 rounded-full px-6 text-white flex items-center gap-2 border-none outline-none"
-            >
-              <FaUser /> Login
-            </button>
-          )}
+  {/* Cart and User/Profile for small devices */}
+  <div className="flex justify-center items-center space-x-6 py-4">
+    <Link to="cart-page" onClick={handleNavClick}>
+      <div
+        tabIndex={0}
+        role="button"
+        className="btn btn-ghost btn-circle text-white relative"
+      >
+        <div className="indicator">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+            />
+          </svg>
+          <span className="badge badge-sm indicator-item">{cart.length || 0}</span>
         </div>
       </div>
+    </Link>
+    {user ? (
+      <Profile user={user} onClick={handleNavClick} />
+    ) : (
+      <button
+        onClick={() => {
+          handleNavClick();
+          document.getElementById("my_modal_5").showModal();
+        }}
+        className="btn bg-blue-500 rounded-full px-6 text-white flex items-center gap-2 border-none outline-none"
+      >
+        <FaUser /> Login
+      </button>
+    )}
+  </div>
+</div>
+
     </header>
   );
 };

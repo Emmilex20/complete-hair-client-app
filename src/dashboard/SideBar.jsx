@@ -1,78 +1,67 @@
-import { Sidebar } from "flowbite-react";
-import {
-  HiArrowSmRight,
-  HiChartPie,
-  HiInbox,
-  HiOutlineCloudUpload,
-  HiTable,
-  HiMenu,
-} from "react-icons/hi";
-import { useState, useContext } from "react";
-import { AuthContext } from "../contexts/AuthProvider";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
-const SideBar = () => {
-  const { user } = useContext(AuthContext);
+const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const handleSidebarClick = () => {
+    setIsSidebarOpen(false);
+  };
+
+  const sidebarItems = [
+    { link: "Dashboard", path: "/dashboard" },
+    { link: "Orders", path: "/orders" },
+    { link: "Products", path: "/products" },
+    { link: "Customers", path: "/customers" },
+  ];
+
   return (
     <div>
-      {/* Button to open the sidebar on small screens */}
-      <div className="md:hidden flex items-center p-4">
-        <button
-          className="text-blue-600 p-2"
-          onClick={toggleSidebar}
-          aria-label="Toggle Sidebar"
-        >
-          <HiMenu className="text-3xl" />
-        </button>
-      </div>
+      <button onClick={toggleSidebar} className="p-2 text-2xl text-white bg-blue-500 lg:hidden">
+        {isSidebarOpen ? <FaTimes /> : <FaBars />}
+      </button>
 
-      {/* Sidebar */}
+      <aside className="hidden lg:block fixed top-0 left-0 w-64 h-screen bg-blue-700 text-white z-30">
+        <ul className="space-y-6 p-6">
+          {sidebarItems.map(({ link, path }) => (
+            <li key={path}>
+              <Link to={path} className="block p-4 hover:bg-blue-500">
+                {link}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </aside>
+
       <div
-        className={`fixed top-0 left-0 z-40 w-64 h-full bg-white shadow-md transition-transform transform ${
+        className={`fixed top-0 left-0 bg-blue-700 w-64 h-full p-6 z-50 transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 md:static md:block`}
+        } lg:hidden`}
       >
-        <Sidebar aria-label="Sidebar with content separator example">
-          <Sidebar.Logo href="/" img={user?.photoURL} imgAlt="User logo" className="w-12 h-12">
-            <p>{user?.displayName || "User"}</p>
-          </Sidebar.Logo>
-
-          <Sidebar.Items>
-            <Sidebar.ItemGroup>
-              <Sidebar.Item href="/admin/dashboard" icon={HiChartPie}>
-                Dashboard
-              </Sidebar.Item>
-              <Sidebar.Item href="/admin/dashboard/upload" icon={HiOutlineCloudUpload}>
-                Upload Hair
-              </Sidebar.Item>
-              <Sidebar.Item href="/admin/dashboard/manage" icon={HiInbox}>
-                Manage Hairs
-              </Sidebar.Item>
-              <Sidebar.Item href="/login" icon={HiArrowSmRight}>
-                Sign In
-              </Sidebar.Item>
-              <Sidebar.Item href="/logout" icon={HiTable}>
-                Log Out
-              </Sidebar.Item>
-            </Sidebar.ItemGroup>
-          </Sidebar.Items>
-        </Sidebar>
+        <ul className="space-y-4 text-white text-lg">
+          {sidebarItems.map(({ link, path }) => (
+            <li key={path}>
+              <Link to={path} onClick={handleSidebarClick}>
+                {link}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      {/* Overlay to close the sidebar on small screens */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
-          onClick={toggleSidebar}
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={handleSidebarClick}
         ></div>
       )}
     </div>
   );
 };
 
-export default SideBar;
+export default Sidebar;

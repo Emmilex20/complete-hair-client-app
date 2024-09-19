@@ -1,12 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch("https://formspree.io/f/xldryeop", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" }); // Clear the form
+      console.log(response);
+    } else {
+      alert("There was an error sending your message. Please try again.");
+    }
+  };
+
   return (
     <div className="bg-gradient-to-b from-blue-100 to-white min-h-screen py-12 px-4 sm:px-6 lg:px-8 pt-20">
       <div className="max-w-7xl mx-auto">
         {/* Page Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-extrabold text-blue-600 pt-16">
+          <h2 className="text-4xl font-extrabold text-blue-600 pt-16 transition duration-300 transform hover:scale-105">
             Get in Touch with Us
           </h2>
           <p className="mt-4 text-lg text-gray-600">
@@ -17,11 +48,11 @@ const ContactUs = () => {
 
         {/* Contact Form Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white shadow-lg rounded-lg p-8">
+          <div className="bg-white shadow-lg rounded-lg p-8 transition-transform duration-300 transform hover:shadow-xl">
             <h3 className="text-2xl font-bold text-blue-600 mb-6">
               Send Us a Message
             </h3>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="name" className="sr-only">
                   Full Name
@@ -31,7 +62,9 @@ const ContactUs = () => {
                   name="name"
                   type="text"
                   required
-                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-600 focus:border-blue-600 sm:text-sm"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 sm:text-sm transition duration-300 hover:border-blue-400"
                   placeholder="Full Name"
                 />
               </div>
@@ -44,7 +77,9 @@ const ContactUs = () => {
                   name="email"
                   type="email"
                   required
-                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-600 focus:border-blue-600 sm:text-sm"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 sm:text-sm transition duration-300 hover:border-blue-400"
                   placeholder="Email Address"
                 />
               </div>
@@ -57,23 +92,19 @@ const ContactUs = () => {
                   name="message"
                   rows="4"
                   required
-                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-600 focus:border-blue-600 sm:text-sm"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 sm:text-sm transition duration-300 hover:border-blue-400"
                   placeholder="Your Message"
                 ></textarea>
               </div>
               <div>
-                <a
-                  href="https://wa.link/etkvsz" // Replace with your WhatsApp link
-                  target="_blank" // Opens the link in a new tab
-                  rel="noopener noreferrer" // For security purposes
+                <button
+                  type="submit"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 transition duration-300 transform hover:scale-105"
                 >
-                  <button
-                    type="button"
-                    className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
-                  >
-                    Send Message
-                  </button>
-                </a>
+                  Send Message
+                </button>
               </div>
             </form>
           </div>
@@ -91,17 +122,35 @@ const ContactUs = () => {
             </div>
             <div className="mb-8">
               <h4 className="text-lg font-semibold text-blue-600">Phone</h4>
-              <p className="mt-2 text-gray-600">+234 8062720552</p>
+              <p className="mt-2 text-gray-600">
+                <a href="tel:+2348062720552" className="text-blue-600 hover:underline">
+                  +234 806 272 0552
+                </a>
+              </p>
             </div>
             <div className="mb-8">
-              <h4 className="text-lg font-semibold text-blue-600">Whatsapp</h4>
+              <h4 className="text-lg font-semibold text-blue-600">WhatsApp</h4>
               <p className="mt-2 text-gray-600">
-                123 Beauty St, Hair City, USA
+                <a
+                  href="https://wa.me/2348062720552"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  Message us on WhatsApp
+                </a>
               </p>
             </div>
             <div className="mb-8">
               <h4 className="text-lg font-semibold text-blue-600">Email</h4>
-              <p className="mt-2 text-gray-600">support@yourcompany.com</p>
+              <p className="mt-2 text-gray-600">
+                <a
+                  href="mailto:mercy.james203@gmail.com"
+                  className="text-blue-600 hover:underline"
+                >
+                  mercy.james203@gmail.com
+                </a>
+              </p>
             </div>
           </div>
         </div>
