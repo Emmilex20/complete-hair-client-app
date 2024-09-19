@@ -143,13 +143,13 @@ const Licensing = () => {
             <p className="text-sm sm:text-base md:text-lg text-gray-600">
               <strong>Email:</strong>{" "}
               <span className="text-blue-600 font-semibold">
-                licensing@yourcompany.com
+              <a href="mailto:mercy.james203@gmail.com">mercy.james203@gmail.com</a>
               </span>
             </p>
             <p className="text-sm sm:text-base md:text-lg text-gray-600">
               <strong>Phone:</strong>{" "}
               <span className="text-blue-600 font-semibold">
-                +234 8062720552
+              <a href="tel:+2348062720552">+234 8062720552</a>
               </span>
             </p>
           </div>

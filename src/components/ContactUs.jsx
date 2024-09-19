@@ -26,7 +26,6 @@ const ContactUs = () => {
     if (response.ok) {
       alert("Message sent successfully!");
       setFormData({ name: "", email: "", message: "" }); // Clear the form
-      console.log(response);
     } else {
       alert("There was an error sending your message. Please try again.");
     }
@@ -123,11 +122,23 @@ const ContactUs = () => {
             <div className="mb-8">
               <h4 className="text-lg font-semibold text-blue-600">Phone</h4>
               <p className="mt-2 text-gray-600">
-                <a href="tel:+2348062720552" className="text-blue-600 hover:underline">
+                <a
+                  href="tel:+2348062720552"
+                  className="text-blue-600 hover:underline transition duration-300 transform hover:scale-105"
+                >
                   +234 806 272 0552
                 </a>
               </p>
+              <p className="mt-1 text-gray-600">
+                <a
+                  href="tel:+2349029006374"
+                  className="text-blue-600 hover:underline transition duration-300 transform hover:scale-105"
+                >
+                  +234 902 900 6374
+                </a>
+              </p>
             </div>
+
             <div className="mb-8">
               <h4 className="text-lg font-semibold text-blue-600">WhatsApp</h4>
               <p className="mt-2 text-gray-600">
@@ -135,7 +146,7 @@ const ContactUs = () => {
                   href="https://wa.me/2348062720552"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 hover:underline transition duration-300 transform hover:scale-105"
                 >
                   Message us on WhatsApp
                 </a>
@@ -146,9 +157,24 @@ const ContactUs = () => {
               <p className="mt-2 text-gray-600">
                 <a
                   href="mailto:mercy.james203@gmail.com"
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 hover:underline transition duration-300 transform hover:scale-105"
                 >
                   mercy.james203@gmail.com
+                </a>
+              </p>
+            </div>
+            <div className="mb-8">
+              <h4 className="text-lg font-semibold text-blue-600">Instagram</h4>
+              <p className="mt-2 text-gray-600">
+                <a
+                  href="https://www.instagram.com/hair.heritage_"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline transition duration-300 transform hover:scale-105"
+                >
+                  Follow us on{" "}
+                  <span className="font-bold text-blue-700">Instagram</span>{" "}
+                  <span className="italic">@hair.heritage_</span>
                 </a>
               </p>
             </div>

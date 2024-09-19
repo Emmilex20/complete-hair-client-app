@@ -1,6 +1,9 @@
 import React from "react";
 
 const PrivacyPolicy = () => {
+  // Get the current date
+  const currentDate = new Date().toLocaleDateString();
+
   return (
     <div className="bg-gradient-to-b from-blue-100 to-white min-h-screen py-12 px-4 sm:px-6 md:px-8 lg:px-10 pt-20">
       <div className="max-w-7xl mx-auto">
@@ -119,7 +122,7 @@ const PrivacyPolicy = () => {
               You have the right to access, update, or delete your personal
               information. If you would like to manage your preferences or
               exercise your rights, please contact us at:
-              <span className="text-blue-600 font-semibold"> privacy@yourcompany.com</span>.
+              <span className="text-blue-600 font-semibold"> <a href="mailto:mercy.james203@gmail.com">mercy.james203@gmail.com</a></span>.
             </p>
             <ul className="list-disc list-inside text-gray-600">
               <li>Access or correct your data</li>
@@ -140,7 +143,7 @@ const PrivacyPolicy = () => {
               informed about how we are protecting your data.
             </p>
             <p className="text-gray-600">
-              Last updated: <span className="font-semibold">[DATE]</span>
+              Last updated: <span className="font-semibold">{currentDate}</span>
             </p>
           </div>
 
@@ -156,12 +159,14 @@ const PrivacyPolicy = () => {
             <p className="text-gray-600">
               <strong>Email:</strong>{" "}
               <span className="text-blue-600 font-semibold">
-                support@yourcompany.com
+                <a href="mailto:mercy.james203@gmail.com">mercy.james203@gmail.com</a>
               </span>
             </p>
             <p className="text-gray-600">
               <strong>Phone:</strong>{" "}
-              <span className="text-blue-600 font-semibold">+234 8062720552</span>
+              <span className="text-blue-600 font-semibold">
+                <a href="tel:+2348062720552">+234 8062720552</a>
+              </span>
             </p>
           </div>
         </div>
