@@ -14,10 +14,19 @@ const FavHair = () => {
           Our Favorite <span className="text-blue-700">Hair Style!</span>
         </h2>
         <p className="mb-10 text-lg md:w-5/6">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi
-          adipisci reprehenderit, sint repellendus laboriosam quasi repudiandae
-          vel odio quod corporis, nostrum excepturi. Ipsa id recusandae corrupti
-          nesciunt repudiandae veniam veritatis!
+          Introducing our favorite hairstyle:{" "}
+          <span className="text-blue-600 font-semibold italic underline decoration-dotted decoration-blue-400">
+            Elegant Waves
+          </span>
+          . Perfect for any occasion, this timeless look features soft, flowing
+          waves that add a touch of class and charm. Loved by our customers for
+          its versatility, the{" "}
+          <span className="text-blue-600 font-semibold italic underline decoration-dotted decoration-blue-400">
+            Elegant Waves
+          </span>{" "}
+          suit every face shape and hair type. Whether you're dressing up for a
+          special event or keeping it casual, this style ensures you always look
+          effortlessly beautiful.
         </p>
         {/* Stats */}
         <div className="flex flex-col sm:flex-row justify-between gap-6 md:w-3/4 my-1">
@@ -36,7 +45,7 @@ const FavHair = () => {
         </div>
 
         <Link to="/shop" className="mt-12 block">
-          <button className="bg-blue-700 text-wite font-semibold px-5 py-2 rounded hover:bg-black transition-all duration-300 text-white">
+          <button className="bg-blue-700 text-white font-semibold px-5 py-2 rounded hover:bg-black transition-all duration-300">
             Explore More!
           </button>
         </Link>
